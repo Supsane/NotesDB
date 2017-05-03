@@ -1,7 +1,8 @@
 package com.chashurin.notesdb;
 
 import android.content.Context;
-
+import android.database.sqlite.SQLiteDatabase;
+import com.chashurin.notesdb.database.NotesBaseHelper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -14,6 +15,8 @@ class NotesListArray {
 
     private static NotesListArray sNotesListArray;
     private List<Notes> mNotes;
+    private Context mContext;
+    private SQLiteDatabase mDataBase;
 
     static NotesListArray get(Context context) {
         if (sNotesListArray == null) {
@@ -23,6 +26,8 @@ class NotesListArray {
     }
 
     private NotesListArray(Context context) {
+        mContext = context.getApplicationContext();
+        mDataBase = new NotesBaseHelper(mContext).getWritableDatabase();
         mNotes = new ArrayList<>();
     }
 
