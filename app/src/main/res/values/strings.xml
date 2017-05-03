@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NotesDB</string>
+    <string name="action_settings">Settings</string>
+    <string name="notes_title_hint">Enter a title for the notes.</string>
+    <string name="notes_title_label">Title</string>
+    <string name="notes_details_label">Details</string>
+</resources>
