@@ -12,6 +12,7 @@ public class NotesDBSchema {
             public static final String TITLE_NOTES = "title";
             public static final String TEXT_NOTES = "text";
             public static final String DATE = "date";
+            public static final String UUID = "uuid";
         }
     }
 }

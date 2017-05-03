@@ -3,7 +3,6 @@ package com.chashurin.notesdb.database;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import com.chashurin.notesdb.database.NotesDBSchema.NotesTable;
 
 /**
@@ -23,6 +22,7 @@ public class NotesBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + NotesTable.NAME + "(" +
                 "_id integer primary key autoincrement, " +
+                NotesTable.Cols.UUID + " integer, " +
                 NotesTable.Cols.TITLE_NOTES + " text, " +
                 NotesTable.Cols.TEXT_NOTES + " text, " +
                 NotesTable.Cols.DATE +

@@ -41,6 +41,13 @@ public class NotesFragment extends Fragment {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+
+        NotesListArray.get(getActivity()).updateNotes(mNotes);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_notes, container, false);
