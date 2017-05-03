@@ -18,8 +18,8 @@
         </activity>
         <activity
             android:name=".NotesPagerActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:label="@string/action_add_notes"
+            android:parentActivityName=".NotesListActivity"/>
     </application>
 
 </manifest>

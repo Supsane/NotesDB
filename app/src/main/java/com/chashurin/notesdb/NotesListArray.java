@@ -10,12 +10,12 @@ import java.util.UUID;
  * Created by Чашурин on 03.05.2017.
  */
 
-public class NotesListArray {
+class NotesListArray {
 
     private static NotesListArray sNotesListArray;
     private List<Notes> mNotes;
 
-    public static NotesListArray get(Context context) {
+    static NotesListArray get(Context context) {
         if (sNotesListArray == null) {
             sNotesListArray = new NotesListArray(context);
         }
@@ -24,18 +24,17 @@ public class NotesListArray {
 
     private NotesListArray(Context context) {
         mNotes = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            Notes notes = new Notes();
-            notes.setmTitle("Notes # " + i);
-            mNotes.add(notes);
-        }
     }
 
-    public List<Notes> getmNotes() {
+    void addNotes (Notes notes) {
+        mNotes.add(notes);
+    }
+
+    List<Notes> getmNotes() {
         return mNotes;
     }
 
-    public Notes getNotes(UUID id) {
+    Notes getNotes(UUID id) {
         for (Notes notes : mNotes) {
             if (notes.getmId().equals(id)) {
                 return notes;
