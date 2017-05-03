@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -64,10 +65,24 @@ public class NotesListFragment extends Fragment {
                 startActivity(intent);
                 return true;
             }
+            case R.id.action_show_subtitle: {
+                updateSubTitle();
+                return true;
+            }
             default: {
                 return super.onOptionsItemSelected(item);
             }
         }
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    void updateSubTitle() {
+        NotesListArray notesListArray = NotesListArray.get(getActivity());
+        int notesCount = notesListArray.getmNotes().size();
+        String subtitle = getString(R.string.subtitle_format, notesCount);
+
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.getSupportActionBar().setSubtitle(subtitle);
     }
 
     private void updateUI() {
@@ -80,6 +95,7 @@ public class NotesListFragment extends Fragment {
         } else {
             notesAdapter.notifyDataSetChanged();
         }
+        updateSubTitle();
     }
 
     private class NotesHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
