@@ -4,11 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.chashurin.notesdb.database.NotesCursorWrapper;
 import com.chashurin.notesdb.database.NotesDBSchema.NotesTable;
 import com.chashurin.notesdb.database.NotesBaseHelper;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
