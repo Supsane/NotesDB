@@ -13,6 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -25,6 +28,7 @@ public class NotesFragment extends Fragment {
     private Notes mNotes;
     private EditText mTitleNotes, mTextNotes;
     private Button mDateButton;
+    final SimpleDateFormat format = new SimpleDateFormat("E, dd.MM.yyyy, HH:mm");
 
     public static NotesFragment newInstance(UUID notesid) {
         Bundle args = new Bundle();
@@ -59,7 +63,8 @@ public class NotesFragment extends Fragment {
         mTextNotes = (EditText) view.findViewById(R.id.notes_text);
         mTextNotes.setText(mNotes.getmText());
         mDateButton = (Button) view.findViewById(R.id.notes_date_button);
-        mDateButton.setText(mNotes.getmDate().toString());
+        Date date = mNotes.getmDate();
+        mDateButton.setText(format.format(date));
         mTitleNotesBehavior();
         mTextNotesBehavior();
         return view;

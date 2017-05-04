@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,6 +27,7 @@ public class NotesListFragment extends Fragment {
 
     private RecyclerView mNotesRecyclerView;
     private NotesAdapter notesAdapter;
+    final SimpleDateFormat format = new SimpleDateFormat("E, dd.MM.yyyy, HH:mm");
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -120,7 +123,8 @@ public class NotesListFragment extends Fragment {
         public void setElementListNotes(Notes notes) {
             mNotes = notes;
             mTitleNotes.setText(mNotes.getmTitle());
-            mDateNotes.setText(mNotes.getmDate().toString());
+            Date date = mNotes.getmDate();
+            mDateNotes.setText(format.format(date));
         }
 
         @Override

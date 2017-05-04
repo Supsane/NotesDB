@@ -2,7 +2,6 @@ package com.chashurin.notesdb;
 
 import java.util.Date;
 import java.util.UUID;
-import com.chashurin.notesdb.database.NotesCursorWrapper;
 
 /**
  * Created by Чашурин on 03.05.2017.

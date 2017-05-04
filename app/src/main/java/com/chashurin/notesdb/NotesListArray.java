@@ -94,7 +94,7 @@ class NotesListArray {
         values.put(NotesTable.Cols.UUID, notes.getmId().toString());
         values.put(NotesTable.Cols.TITLE_NOTES, notes.getmTitle());
         values.put(NotesTable.Cols.TEXT_NOTES, notes.getmText());
-        values.put(NotesTable.Cols.DATE, notes.getmDate().toString());
+        values.put(NotesTable.Cols.DATE, notes.getmDate().getTime());
 
         return values;
     }
