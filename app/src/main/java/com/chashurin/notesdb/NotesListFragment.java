@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -63,10 +65,6 @@ public class NotesListFragment extends Fragment {
                 NotesListArray.get(getActivity()).addNotes(notes);
                 Intent intent = NotesPagerActivity.newIntent(getActivity(), notes.getmId());
                 startActivity(intent);
-                return true;
-            }
-            case R.id.action_show_subtitle: {
-                updateSubTitle();
                 return true;
             }
             default: {

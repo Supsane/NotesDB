@@ -2,8 +2,9 @@
     <string name="app_name">NotesDB</string>
     <string name="action_add_notes">Add notes</string>
     <string name="action_done">Done</string>
-    <string name="notes_title_hint">Enter a title for the notes.</string>
-    <string name="notes_title_label">Title</string>
+    <string name="notes_title_hint">Enter a name for the notes.</string>
+    <string name="notes_text_hint">Enter a text for the notes.</string>
+    <string name="notes_title_label">Name</string>
     <string name="notes_details_label">Details</string>
     <string name="dialog_title">Date of notes:</string>
     <string name="subtitle_format">%1$d notes</string>

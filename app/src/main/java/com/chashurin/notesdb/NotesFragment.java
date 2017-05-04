@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
 import java.util.UUID;
 
 /**
@@ -21,7 +22,7 @@ public class NotesFragment extends Fragment {
     private static final String ARG_NOTES_ID = "notes_id";
     private static final String DIALOOG_DATE = "dialogDate";
     private Notes mNotes;
-    private EditText mTitleNotes;
+    private EditText mTitleNotes, mTextNotes;
     private Button mDateButton;
 
     public static NotesFragment newInstance(UUID notesid) {
@@ -53,6 +54,8 @@ public class NotesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_notes, container, false);
         mTitleNotes = (EditText) view.findViewById(R.id.notes_title);
         mTitleNotes.setText(mNotes.getmTitle());
+        mTextNotes = (EditText) view.findViewById(R.id.notes_text);
+        mTextNotes.setText(mNotes.getmText());
         mDateButton = (Button) view.findViewById(R.id.notes_date_button);
         mDateButton.setText(mNotes.getmDate().toString());
         mDateButton.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +67,27 @@ public class NotesFragment extends Fragment {
             }
         });
         mTitleNotesBehavior();
+        mTextNotesBehavior();
         return view;
+    }
+
+    private void mTextNotesBehavior() {
+        mTextNotes.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mNotes.setmText(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     private void mTitleNotesBehavior() {
