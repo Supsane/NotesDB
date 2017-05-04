@@ -2,11 +2,11 @@ package com.chashurin.notesdb;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -39,7 +38,6 @@ public class NotesListFragment extends Fragment {
 
         mNotesRecyclerView = (RecyclerView) view.findViewById(R.id.notes_recycler_view);
         mNotesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         updateUI();
 
         return view;
@@ -47,6 +45,7 @@ public class NotesListFragment extends Fragment {
 
     @Override
     public void onResume() {
+        Log.d("NotesListFragment", "onResume");
         super.onResume();
         updateUI();
     }
@@ -54,7 +53,7 @@ public class NotesListFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_notes, menu);
+        inflater.inflate(R.menu.menu_list_fragment, menu);
     }
 
     @Override
@@ -65,6 +64,15 @@ public class NotesListFragment extends Fragment {
                 NotesListArray.get(getActivity()).addNotes(notes);
                 Intent intent = NotesPagerActivity.newIntent(getActivity(), notes.getmId());
                 startActivity(intent);
+                return true;
+            }
+            case R.id.action_delete_all_notes: {
+                NotesListArray.get(getActivity()).deleteAllNotes();
+                NotesListArray notesListArray = NotesListArray.get(getActivity());
+                List<Notes> notes = notesListArray.getmNotes();
+                notesAdapter = new NotesAdapter(notes);
+                mNotesRecyclerView.setAdapter(notesAdapter);
+                updateSubTitle();
                 return true;
             }
             default: {
@@ -83,10 +91,9 @@ public class NotesListFragment extends Fragment {
         activity.getSupportActionBar().setSubtitle(subtitle);
     }
 
-    private void updateUI() {
+    void updateUI() {
         NotesListArray notesListArray = NotesListArray.get(getActivity());
         List<Notes> notes = notesListArray.getmNotes();
-
         if (notesAdapter == null) {
             notesAdapter = new NotesAdapter(notes);
             mNotesRecyclerView.setAdapter(notesAdapter);
@@ -121,7 +128,7 @@ public class NotesListFragment extends Fragment {
         }
     }
 
-    private class NotesAdapter extends RecyclerView.Adapter<NotesHolder> {
+    public class NotesAdapter extends RecyclerView.Adapter<NotesHolder> {
 
         private List<Notes> mNotes;
 

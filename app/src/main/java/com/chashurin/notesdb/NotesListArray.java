@@ -39,6 +39,15 @@ class NotesListArray {
         mDataBase.insert(NotesTable.NAME, null, values);
     }
 
+    void deleteAllNotes() {
+        mDataBase.delete(NotesTable.NAME, null, null);
+    }
+
+    void deleteNotes(UUID id) {
+        mDataBase.delete(NotesTable.NAME, NotesTable.Cols.UUID + " = ?", new String[] {id.toString()});
+
+    }
+
     public List<Notes> getmNotes() {
         List<Notes> notes = new ArrayList<>();
 

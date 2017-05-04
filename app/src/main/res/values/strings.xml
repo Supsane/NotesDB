@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">NotesDB</string>
     <string name="action_add_notes">Add notes</string>
+    <string name="action_delete_notes">Delete notes</string>
+    <string name="action_delete_all_notes">Delete all notes</string>
     <string name="action_done">Done</string>
     <string name="notes_title_hint">Enter a name for the notes.</string>
     <string name="notes_text_hint">Enter a text for the notes.</string>
