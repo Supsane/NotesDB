@@ -94,16 +94,12 @@ public class NotesListFragment extends Fragment {
     void updateUI() {
         NotesListArray notesListArray = NotesListArray.get(getActivity());
         List<Notes> notes = notesListArray.getmNotes();
-        if (notesAdapter == null) {
-            notesAdapter = new NotesAdapter(notes);
-            mNotesRecyclerView.setAdapter(notesAdapter);
-        } else {
-            notesAdapter.notifyDataSetChanged();
-        }
+        notesAdapter = new NotesAdapter(notes);
+        mNotesRecyclerView.setAdapter(notesAdapter);
         updateSubTitle();
     }
 
-    private class NotesHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    private class NotesHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView mTitleNotes, mDateNotes;
         private Notes mNotes;
@@ -123,7 +119,7 @@ public class NotesListFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            Intent intent = NotesPagerActivity.newIntent(getActivity(),mNotes.getmId());
+            Intent intent = NotesPagerActivity.newIntent(getActivity(), mNotes.getmId());
             startActivity(intent);
         }
     }

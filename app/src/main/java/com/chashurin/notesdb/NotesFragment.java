@@ -3,7 +3,6 @@ package com.chashurin.notesdb;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -14,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-
 import java.util.UUID;
 
 /**
@@ -24,7 +22,6 @@ import java.util.UUID;
 public class NotesFragment extends Fragment {
 
     private static final String ARG_NOTES_ID = "notes_id";
-    private static final String DIALOOG_DATE = "dialogDate";
     private Notes mNotes;
     private EditText mTitleNotes, mTextNotes;
     private Button mDateButton;
@@ -63,14 +60,6 @@ public class NotesFragment extends Fragment {
         mTextNotes.setText(mNotes.getmText());
         mDateButton = (Button) view.findViewById(R.id.notes_date_button);
         mDateButton.setText(mNotes.getmDate().toString());
-        mDateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
-                DatePickerFragment dialog = new DatePickerFragment();
-                dialog.show(fragmentManager, DIALOOG_DATE);
-            }
-        });
         mTitleNotesBehavior();
         mTextNotesBehavior();
         return view;
