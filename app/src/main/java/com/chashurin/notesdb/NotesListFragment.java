@@ -94,8 +94,14 @@ public class NotesListFragment extends Fragment {
     void updateUI() {
         NotesListArray notesListArray = NotesListArray.get(getActivity());
         List<Notes> notes = notesListArray.getmNotes();
-        notesAdapter = new NotesAdapter(notes);
-        mNotesRecyclerView.setAdapter(notesAdapter);
+
+        if (notesAdapter == null) {
+            notesAdapter = new NotesAdapter(notes);
+            mNotesRecyclerView.setAdapter(notesAdapter);
+        } else {
+            notesAdapter.setNotes(notes);
+            notesAdapter.notifyDataSetChanged();
+        }
         updateSubTitle();
     }
 
@@ -150,5 +156,11 @@ public class NotesListFragment extends Fragment {
         public int getItemCount() {
             return mNotes.size();
         }
+
+        public void setNotes(List<Notes> notes) {
+            mNotes = notes;
+        }
     }
+
+
 }
