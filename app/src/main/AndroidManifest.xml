@@ -20,6 +20,11 @@
             android:name=".NotesPagerActivity"
             android:label="@string/action_add_notes"
             android:parentActivityName=".NotesListActivity"/>
+
+        <provider
+            android:authorities="com.chashurin.providers.notesdb"
+            android:name=".database.NotesProvider"
+            android:exported="true"/>
     </application>
 
 </manifest>
