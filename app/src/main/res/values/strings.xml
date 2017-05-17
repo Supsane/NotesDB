@@ -10,4 +10,6 @@
     <string name="notes_details_label">Details</string>
     <string name="dialog_title">Date of notes:</string>
     <string name="subtitle_format">%1$d notes</string>
+    <string name="widget_name">Notes List</string>
+    <string name="widget_test_text">Text in widget</string>
 </resources>

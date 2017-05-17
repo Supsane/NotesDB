@@ -21,6 +21,19 @@
             android:label="@string/action_add_notes"
             android:parentActivityName=".NotesListActivity"/>
 
+        <receiver
+            android:name=".MyWidget"
+            android:label="@string/widget_name">
+            <intent-filter>
+                <action
+                    android:name="android.appwidget.action.APPWIDGET_UPDATE">
+                </action>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_metadata"/>
+        </receiver>
+
         <provider
             android:authorities="com.chashurin.providers.notesdb"
             android:name=".database.NotesProvider"
